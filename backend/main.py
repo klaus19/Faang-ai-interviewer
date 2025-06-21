@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from app.routes.interview import router as interview_router
+from app.routes.questions import router as questions_router
 
 app = FastAPI(
     title="FAANG AI Interviewer",
@@ -21,6 +22,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(interview_router)
+app.include_router(questions_router)
 
 @app.get("/")
 async def root():

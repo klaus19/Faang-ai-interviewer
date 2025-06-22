@@ -16,7 +16,7 @@ interface InterviewSetupProps {
 }
 
 interface InterviewSettings {
-  sessionType: 'coding';
+  sessionType: 'coding' | 'system_design' | 'behavioral';
   difficulty: 'easy' | 'medium' | 'hard';
   duration: number;
   topic?: string;

@@ -89,15 +89,15 @@ export const InterviewSetup: React.FC<InterviewSetupProps> = ({
     },
     {
       id: 'system_design' as const,
-      name: 'System Design',
-      description: 'Architecture and scalability questions',
+      name: 'Android Interview',
+      description: 'Android Interview Related Questions',
       icon: Target,
       color: 'text-purple-600'
     },
     {
       id: 'behavioral' as const,
-      name: 'Behavioral',
-      description: 'Leadership and experience questions',
+      name: 'React Native & React ',
+      description: 'Interview Questions related to React Native & React.js',
       icon: Lightbulb,
       color: 'text-green-600'
     }

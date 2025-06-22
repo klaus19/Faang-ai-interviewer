@@ -50,13 +50,18 @@ export const InterviewPage: React.FC = () => {
   const initialSettings = location.state || {};
 
   useEffect(() => {
-    // Auto-start if coming from home page
-    if (initialSettings.autoStart && initialSettings.difficulty) {
+    // Get initial settings from navigation state
+    const locationState = location.state as any;
+    console.log('Interview page received state:', locationState);
+    
+    // Auto-start if coming from dashboard or home page
+    if (locationState?.autoStart !== false && locationState?.difficulty) {
       handleStartInterview({
-        sessionType: 'coding',
-        difficulty: initialSettings.difficulty,
-        duration: 30,
-        enableHints: true
+        sessionType: locationState.sessionType || 'coding',
+        difficulty: locationState.difficulty,
+        duration: locationState.duration || 30,
+        topic: locationState.topic || '',
+        enableHints: locationState.enableHints !== false
       });
     }
   }, []);
@@ -133,7 +138,8 @@ export const InterviewPage: React.FC = () => {
         state: {
           submission: result,
           question: state.question,
-          timeElapsed
+          timeElapsed,
+          userCode: state.userCode  // Pass the user's code
         }
       });
 

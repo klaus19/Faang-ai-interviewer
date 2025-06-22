@@ -16,7 +16,7 @@ interface InterviewSetupProps {
 }
 
 interface InterviewSettings {
-  sessionType: 'coding' | 'system_design' | 'behavioral';
+  sessionType: 'coding';
   difficulty: 'easy' | 'medium' | 'hard';
   duration: number;
   topic?: string;
@@ -46,11 +46,27 @@ export const InterviewSetup: React.FC<InterviewSetupProps> = ({
   const fetchCategories = async () => {
     try {
       const cats = await ApiService.getQuestionCategories();
-      setCategories(cats);
+      // Ensure all categories are strings and valid
+      const validCategories = cats
+        .filter(cat => cat && typeof cat === 'string' && cat.length > 0)
+        .map(cat => String(cat).trim());
+      setCategories(validCategories);
     } catch (error) {
       console.log('Categories not available:', error);
-      // Fallback categories
-      setCategories(['arrays', 'strings', 'trees', 'graphs', 'dynamic-programming', 'linked-lists']);
+      // Fallback categories - all strings
+      setCategories([
+        'arrays', 
+        'strings', 
+        'trees', 
+        'graphs', 
+        'dynamic-programming', 
+        'linked-lists',
+        'hash-tables',
+        'sorting',
+        'searching',
+        'recursion',
+        'greedy-algorithms'
+      ]);
     }
   };
 
@@ -216,7 +232,7 @@ export const InterviewSetup: React.FC<InterviewSetupProps> = ({
                 <option value="">Any Topic</option>
                 {categories.map((category) => (
                   <option key={category} value={category}>
-                    {category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ')}
+                    {String(category).charAt(0).toUpperCase() + String(category).slice(1).replace('-', ' ')}
                   </option>
                 ))}
               </select>

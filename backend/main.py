@@ -19,17 +19,17 @@ app = FastAPI(
     version="1.0.0"
 )
 
+origins = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://maang-aiinterviewer.netlify.app",
+    os.getenv("FRONTEND_URL")
+]
+
 # CORS configuration for production
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000", 
-        "https://maang-aiinterviewer.netlify.app/",
-        "https://*.vercel.app",
-        "https://*.surge.sh",
-        os.getenv("FRONTEND_URL", "https://maang-aiinterviewer.netlify.app/")
-    ],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

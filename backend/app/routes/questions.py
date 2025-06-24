@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import Dict, Any, Optional
 
@@ -12,8 +12,8 @@ router = APIRouter(prefix="/questions", tags=["questions"])
 
 @router.get("/generate/{difficulty}")
 async def generate_question(
-    difficulty: str, 
-    topic: Optional[str] = Query(None, description="Optional topic filter (e.g., 'arrays', 'strings', 'trees')")
+    difficulty: str = "medium", 
+    topic: Optional[str] = None
 ) -> Dict[str, Any]:
     """Generate a coding question based on difficulty and optional topic"""
     
@@ -30,7 +30,6 @@ async def generate_question(
         "success": True,
         "question": question,
         "ai_generated": settings.AI_ANALYSIS_ENABLED,
-        "topic_requested": topic,
         "generated_at": datetime.now().isoformat()
     }
 

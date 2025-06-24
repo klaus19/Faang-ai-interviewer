@@ -5,7 +5,7 @@
 
 [build.environment]
   NODE_VERSION = "18"
-  REACT_APP_API_URL = "https://faang-ai-interviewer-production-a59c.up.railway.app"
+  REACT_APP_API_URL = "https://faang-ai-interviewer-production-fbae.up.railway.app"
 
 [[redirects]]
   from = "/*"

@@ -28,7 +28,7 @@ app.add_middleware(
         "https://maang-aiinterviewer.netlify.app/",
         "https://*.vercel.app",
         "https://*.surge.sh",
-        os.getenv("FRONTEND_URL", "http://localhost:3000")
+        os.getenv("FRONTEND_URL", "https://maang-aiinterviewer.netlify.app/")
     ],
     allow_credentials=True,
     allow_methods=["*"],

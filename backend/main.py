@@ -25,7 +25,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000", 
-        "https://*.netlify.app",
+        "https://maang-aiinterviewer.netlify.app/",
         "https://*.vercel.app",
         "https://*.surge.sh",
         os.getenv("FRONTEND_URL", "http://localhost:3000")

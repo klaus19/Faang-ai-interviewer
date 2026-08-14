@@ -1,0 +1,1 @@
+I careated a AI interviwer that will analyse the questions from leetcode and help the student to prepare for the interview. I use TypesScript for the frontend part and Python and Flask for the backend part. 
